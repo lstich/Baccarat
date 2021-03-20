@@ -60,9 +60,8 @@ Rules for drawing 3rd card      (see lecture 12 for Baccarat info)
         stand
     }
 
-
 ---------------------------------------------------
-Winning probability of player
+Calculate Winning probabilites
 
 for (all player 2 card combinations){
     for (all banker 2 card combinations){
@@ -71,8 +70,32 @@ for (all player 2 card combinations){
                 if(banker draws third card){
                     for (every possible banker third card draw){
                         if (player value larger){
-                            calculate(add up odds of each card in each hand being pulled and add to player win total)
+                            //add up odds of each card in each hand and add to player total
+                                addToPlayerWin()
+                            }
+                            else if (banker value larger){
+                                //add up odds of each card in each hand and add to banker total
+                                addToBankerWin()
+                            }
+                            else{
+                                //add up odds of each card in each hand and add to tie total
+                                addToTie()
+                            }
                         }
+                    }
+                }
+                else{
+                    if (player value larger){
+                       //add up odds of each card in each hand and add to player total
+                        addToPlayerWin()
+                    }
+                    else if (banker value larger){
+                        //add up odds of each card in each hand and add to banker total
+                        addToBankerWin()
+                    }
+                    else{
+                         //add up odds of each card in each hand and add to tie total
+                        addToTie()
                     }
                 }
             }
@@ -81,73 +104,42 @@ for (all player 2 card combinations){
             if(banker draws third card){
                 for (every possible banker third card draw){
                     if (player value larger){
-                        calculate(add up odds of each card in each hand being pulled and add to player win total)
+                       //add up odds of each card in each hand and add to player total
+                        addToPlayerWin()
                     }
+                    else if (banker value larger){
+                        //add up odds of each card in each hand and add to banker total
+                        addToBankerWin()
+                    }
+                    else{
+                         //add up odds of each card in each hand and add to tie total
+                        addToTie()
+                    }
+                }
+            }
+            else{
+                if (player value larger){
+                    //add up odds of each card in each hand and add to player total
+                    addToPlayerWin()
+                }
+                else if (banker value larger){
+                    //add up odds of each card in each hand and add to banker total
+                    addToBankerWin()
+                }
+                else{
+                     //add up odds of each card in each hand and add to tie total
+                    addToTie()
                 }
             }
         }
     }
 }
 divide player win total by C(52,2)
-
----------------------------------------------------
-Winning probability of banker
-    
-for (all player 2 card combinations){
-    for (all banker 2 card combinations){
-        if (player draws third card){
-            for (every possible player third card draw){
-                if(banker draws third card){
-                    for (every possible banker third card draw){
-                        if (banker value larger){
-                            calculate(add up odds of each card in each hand being pulled and add to player win total)
-                        }
-                    }
-                }
-            }
-        }
-        else{
-            if(banker draws third card){
-                for (every possible banker third card draw){
-                    if (banker value larger){
-                        calculate(add up odds of each card in each hand being pulled and add to banker win total)
-                    }
-                }
-            }
-        }
-    }
-}
 divide banker win total by C(52,2)
-
----------------------------------------------------
-Probability of tie
-
-for (all player 2 card combinations){
-    for (all banker 2 card combinations){
-        if (player draws third card){
-            for (every possible player third card draw){
-                if(banker draws third card){
-                    for (every possible banker third card draw){
-                        if (player value = banker value){
-                            calculate(add up odds of each card in each hand being pulled and add to tie total)
-                        }
-                    }
-                }
-            }
-        }
-        else{
-            if(banker draws third card){
-                for (every possible banker third card draw){
-                    if (player value = banker value){
-                        calculate(add up odds of each card in each hand being pulled and add to tie total)
-                    }
-                }
-            }
-        }
-    }
-}
 divide tie total by C(52,2)
 
+display results
+        
 ---------------------------------------------------
 Helper: Card hand data type
 
@@ -166,4 +158,3 @@ Helper functions
 - add up probability of hand being drawn
     ex/ {3,9,0} probability is  = 4/52 * 4/52 * 16/52 
 - initialize array of player or banker card hands
-
