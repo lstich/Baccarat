@@ -61,9 +61,6 @@ Rules for drawing 3rd card      (see lecture 12 for Baccarat info)
     }
 
 
-- 
-
-
 ---------------------------------------------------
 Winning probability of player
 
@@ -92,8 +89,6 @@ for (all player 2 card combinations){
     }
 }
 divide player win total by C(52,2)
-        
-
 
 ---------------------------------------------------
 Winning probability of banker
@@ -124,8 +119,6 @@ for (all player 2 card combinations){
 }
 divide banker win total by C(52,2)
 
-
-
 ---------------------------------------------------
 Probability of tie
 
@@ -154,3 +147,23 @@ for (all player 2 card combinations){
     }
 }
 divide tie total by C(52,2)
+
+---------------------------------------------------
+Helper: Card hand data type
+
+class CardHand{
+    public byte cardA
+    public byte cardB
+    public byte cardC
+
+}
+
+---------------------------------------------------
+Helper functions
+
+- check if player draws a third card
+- check if banker draws a third card
+- add up probability of hand being drawn
+    ex/ {3,9,0} probability is  = 4/52 * 4/52 * 16/52 
+- initialize array of player or banker card hands
+
