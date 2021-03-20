@@ -1,16 +1,27 @@
 import java.util.ArrayList;
 
+public class BaccaratProbabilities{
 
-public static void main(String[] args){
+    public static void main(String[] args){
+        Arraylist<CardHand> playerHand = new Arraylist<CardHand>();
+        Arraylist<CardHand> bankerHand = new Arraylist<CardHand>();
+        int playerWinProb = 0;
+        int bankerWinProb = 0;
+        int tieProb = 0;
 
-    Arraylist<CardHand> playerHand = new Arraylist<CardHand>();
-    Arraylist<CardHand> bankerHand = new Arraylist<CardHand>();
-    int playerWinProb = 0;
-    int bankerWinProb = 0;
-    int tieProb = 0;
+        cardHandsInit(playerHand);
+        cardHandsInit(bankerHand);
 
-    public void probabilityOfPlayerWin(){
+        calculateProbabilities();
+        
+    }
 
+    /*
+    calculate and display probabilities of player, banker, and tie
+
+    */
+    public void calculateProbabilities(){
+        
     }
 
     /*
@@ -18,7 +29,7 @@ public static void main(String[] args){
 
     input: ArrayList - lsit of hands
     */
-    public static void CardHandsInit(Arraylist handList){
+    public static void cardHandsInit(Arraylist handList){
         for (int i=0;i<10;i++){
             for (int j=0;j<10;j++){
                 handlist.add(new CardHand(i,j));
@@ -53,7 +64,7 @@ public static void main(String[] args){
     /*
     add up probability of hand being drawn
 
-    ex/ {3,9,0} probability is
+    ex/ probability of player and banker hands{3,} 
     = 4/52 * 4/52 * 16/52 
 
     input:  CardHand - banker hand
@@ -62,10 +73,9 @@ public static void main(String[] args){
     public void probabilityOfHands(CardHand player, CardHand banker){
 
     }
-
 }
 
-class CardHand{
+public class CardHand{
     public byte cardA;
     public byte cardB;
     public byte cardC;
