@@ -3,7 +3,6 @@ import java.util.*;
 
 public class BaccaratProbabilities{
 
-
         private static ArrayList<CardHand> playerHands;
         private static ArrayList<CardHand> bankerHands;
         private static double playerWinProb;
@@ -32,7 +31,7 @@ public class BaccaratProbabilities{
 
         for (CardHand player : playerHands){
             for (CardHand banker : bankerHands){
-                //System.out.print(banker.getCardC());
+                System.out.print(banker.getCardC());
                 if (doesPlayerDrawThird(player,banker)){
                     for(int i=0; i<10; i++){
                         player.setCardC(i);
@@ -51,7 +50,7 @@ public class BaccaratProbabilities{
                                     tieProb += probabilityOfHands(player,banker);
                                 }
                             }
-                            banker.setCardC(0);
+                            banker.setCardC(-1);
                         }
                         else{
                             if (player.value() > banker.value()){
@@ -65,7 +64,7 @@ public class BaccaratProbabilities{
                             }
                         }
                     }
-                    player.setCardC(0);
+                    player.setCardC(-1);
                 }
                 else{
                     if (doesBankerDrawThird(player,banker)){
@@ -82,7 +81,7 @@ public class BaccaratProbabilities{
                                 tieProb += probabilityOfHands(player,banker);
                             }
                         }
-                        banker.setCardC(0);
+                        banker.setCardC(-1);
                     }
                     else{
                         if (player.value() > banker.value()){
@@ -173,16 +172,16 @@ public class BaccaratProbabilities{
         }
         //player drew third card
         else{   
-            if(bHand.value() == 3 && pHand.value() != 8){
+            if(bHand.value() == 3 && pHand.getCardC() != 8){
                 result = true;
             }
-            else if ( bHand.value() == 4 && pHand.value() >= 2 && pHand.value() <= 7){
+            else if ( bHand.value() == 4 && pHand.getCardC() >= 2 && pHand.getCardC() <= 7){
                 result = true;
             }
-            else if ( bHand.value() == 5 && pHand.value() >= 4 && pHand.value() <= 7){
+            else if ( bHand.value() == 5 && pHand.getCardC() >= 4 && pHand.getCardC() <= 7){
                 result = true;
             }
-            else if ( bHand.value() == 6 && pHand.value() >= 6 && pHand.value() <= 7){
+            else if ( bHand.value() == 6 && pHand.getCardC() >= 6 && pHand.getCardC() <= 7){
                 result = true;
             }
         }
