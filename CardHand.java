@@ -8,7 +8,7 @@ public class CardHand{
     public CardHand(int a, int b, boolean nat){
         cardA = a;
         cardB = b;
-        cardC = 0;
+        cardC = -1;
         natural = nat;
     }
 
@@ -30,7 +30,11 @@ public class CardHand{
     }
     
     public int value(){
+        int third = 0;
+        if(cardC != -1){
+            third = cardC;
+        }
         //System.out.println(cardA + " " + cardB + " " + cardC + " " + (( cardA + cardB + third) %10));
-        return ( cardA + cardB + cardC) %10;
+        return ( cardA + cardB + third) %10;
     }
 }
