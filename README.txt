@@ -4,6 +4,10 @@ Calculate probabilities of banker win, player win, or tie
 ---------------------------------------------------
 Assumptions
 
+- Expected outputs: 
+    - Player wins with ~= 0.446147 probability
+    - Banker wins with ~= 0.458428 probability
+    - Tie occurs with  ~= 0.095426
 - suit not important, only the 13 face values
 - infinite decks, so assume there are replacements 
     ex/ every face value is of equal chance of appearing 
