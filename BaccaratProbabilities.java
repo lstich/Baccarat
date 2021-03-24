@@ -1,8 +1,6 @@
 import java.util.*;
-//import org.apache.commons.math4.util*;
 
 public class BaccaratProbabilities{
-
         private static ArrayList<CardHand> playerHands;
         private static ArrayList<CardHand> bankerHands;
         private static double playerWinProb;
@@ -31,7 +29,7 @@ public class BaccaratProbabilities{
 
         for (CardHand player : playerHands){
             for (CardHand banker : bankerHands){
-                System.out.print(banker.getCardC());
+                //System.out.print(banker.getCardC());
                 if (doesPlayerDrawThird(player,banker)){
                     for(int i=0; i<10; i++){
                         player.setCardC(i);
@@ -105,7 +103,7 @@ public class BaccaratProbabilities{
     /*
     initialize arraylist of all possible 2 card hands
 
-    input: ArrayList - lsit of hands
+    input: ArrayList - list of hands
     */
     public static void cardHandsInit(ArrayList<CardHand> handList){
         for (int i=0;i<10;i++){
@@ -148,20 +146,20 @@ public class BaccaratProbabilities{
     output: boolean - whether or not third is drawn
     */
     public static boolean doesBankerDrawThird(CardHand pHand, CardHand bHand){
-    
-        //System.out.print(pHand.value() + " " + bHand.value() + " third card: " + bHand.getCardC()  + "      Cards: " + bHand.getCardA() + bHand.getCardB() + "      ");
-    
+
         boolean result = false;
         if (pHand.isNatural() || bHand.isNatural()){
             result = false;
         }
-        else if(bHand.value() <= 2){
+        else if(bHand.value() < 3){
             result = true;
         }
         else if(bHand.value() == 7){
+            
             result = false;
         }
-        else if(pHand.value() == 6 || pHand.value() == 7){
+        else if((pHand.value() == 6 || pHand.value() == 7) && pHand.getCardC() == -1){
+
             if(bHand.value() >=3 && bHand.value() <= 5){
                 result = true;
             }
@@ -184,10 +182,10 @@ public class BaccaratProbabilities{
             else if ( bHand.value() == 6 && pHand.getCardC() >= 6 && pHand.getCardC() <= 7){
                 result = true;
             }
+            //else result is already false
         }
-    
         //System.out.println(result);
-        
+    
         return result;
     }
 
@@ -203,27 +201,19 @@ public class BaccaratProbabilities{
     output: int probability of this hand occuring
     */
     public static double probabilityOfHands(CardHand player, CardHand banker){
-        double binomialCoeffPlayer = 1326;    // value for 52 choose 2
-        double binomialCoeffBanker = 1326;
-
-        double totalPlayer = (player.getCardA() == 0) ? 16 : 4;
-        totalPlayer*= (player.getCardB() == 0) ? 16 : 4;
+        
+        double totalPlayer = (player.getCardA() == 0) ? 0.307692307 : 0.076923076;
+        totalPlayer*= (player.getCardB() == 0) ? 0.307692307 : 0.076923076;
         if (player.getCardC() > -1){
-            totalPlayer*= (player.getCardC() == 0) ? 16 : 4;
-            binomialCoeffPlayer = 22100;
+            totalPlayer*= (player.getCardC() == 0) ? 0.307692307 : 0.076923076;
         }
-        totalPlayer = totalPlayer/binomialCoeffPlayer;
 
-
-        double totalBanker= (banker.getCardA() == 0) ? 16 : 4;
-        totalBanker*= (banker.getCardB() == 0) ? 16 : 4;
+        double totalBanker = (banker.getCardA() == 0) ? 0.307692307 : 0.076923076;
+        totalBanker*= (banker.getCardB() == 0) ? 0.307692307 : 0.076923076;
         if (banker.getCardC() > -1){
-            totalBanker*= (banker.getCardC() == 0) ? 16 : 4;
-            binomialCoeffBanker = 22100;
+            totalBanker*= (banker.getCardC() == 0) ? 0.307692307 : 0.076923076;
         }
-        totalBanker = totalBanker/binomialCoeffBanker;
 
-        //System.out.println(totalPlayer*totalBanker/100);
         return totalPlayer*totalBanker;
     }
 }
