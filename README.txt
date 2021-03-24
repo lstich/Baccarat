@@ -2,6 +2,13 @@
 Calculate probabilities of banker win, player win, or tie
 
 ---------------------------------------------------
+Group members
+
+Eric Tran        101154728
+Kevin Zhang      101147715
+Luke Stichhaller 101072891
+
+---------------------------------------------------
 How to run
 
 - Open a terminal in this folder
