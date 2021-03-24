@@ -2,6 +2,13 @@
 Calculate probabilities of banker win, player win, or tie
 
 ---------------------------------------------------
+How to run
+
+- Open a terminal in this folder
+- Compile with: javac BaccaratProbabilites.java
+- Run with:  java BaccaratProbabilites
+
+---------------------------------------------------
 Assumptions
 
 - Expected outputs: 
