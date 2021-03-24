@@ -6,6 +6,7 @@ public class BaccaratProbabilities{
         private static double playerWinProb;
         private static double bankerWinProb;
         private static double tieProb;
+        private static double SINGLE_CARD_PROBABILITY = 0.076923076;
 
     public static void main(String[] args){
         playerHands = new ArrayList<CardHand>();
@@ -94,9 +95,9 @@ public class BaccaratProbabilities{
                 }
             }
         }
-        System.out.println(playerWinProb);
-        System.out.println(bankerWinProb);
-        System.out.println(tieProb);
+        System.out.println("Probability of winning: \nPlayer: " + playerWinProb);
+        System.out.println("Banker: " + bankerWinProb);
+        System.out.println("Tie:    " + tieProb);
     }
 
     /*
@@ -112,7 +113,7 @@ public class BaccaratProbabilities{
                     nat = true;
                 }
                 handList.add(new CardHand(i,j,nat));
-           }
+            }
         }
     }
     /*
@@ -132,8 +133,6 @@ public class BaccaratProbabilities{
         return false;
     }
 
-
-
     /*
     check if banker draws a third card
 
@@ -151,7 +150,6 @@ public class BaccaratProbabilities{
             result = true;
         }
         else if(bHand.value() == 7){
-            
             result = false;
         }
         else if((pHand.value() == 6 || pHand.value() == 7) && pHand.getCardC() == -1){
@@ -184,7 +182,6 @@ public class BaccaratProbabilities{
         return result;
     }
 
-
     /*
     add up probability of hand being drawn
 
@@ -197,16 +194,17 @@ public class BaccaratProbabilities{
     */
     public static double probabilityOfHands(CardHand player, CardHand banker){
 
-        double totalPlayer = (player.getCardA() == 0) ? 0.307692307 : 0.076923076;
-        totalPlayer*= (player.getCardB() == 0) ? 0.307692307 : 0.076923076;
+        //if card is 0 probability is 4 times that of a single card since 10,J,Q,K all have value 0
+        double totalPlayer = (player.getCardA() == 0) ? 4 * SINGLE_CARD_PROBABILITY : SINGLE_CARD_PROBABILITY;
+        totalPlayer*= (player.getCardB() == 0) ? 4 * SINGLE_CARD_PROBABILITY : SINGLE_CARD_PROBABILITY;
         if (player.getCardC() > -1){
-            totalPlayer*= (player.getCardC() == 0) ? 0.307692307 : 0.076923076;
+            totalPlayer*= (player.getCardC() == 0) ? 4 * SINGLE_CARD_PROBABILITY : SINGLE_CARD_PROBABILITY;
         }
 
-        double totalBanker = (banker.getCardA() == 0) ? 0.307692307 : 0.076923076;
-        totalBanker*= (banker.getCardB() == 0) ? 0.307692307 : 0.076923076;
+        double totalBanker = (banker.getCardA() == 0) ? 4 * SINGLE_CARD_PROBABILITY : SINGLE_CARD_PROBABILITY;
+        totalBanker*= (banker.getCardB() == 0) ? 4 * SINGLE_CARD_PROBABILITY : SINGLE_CARD_PROBABILITY;
         if (banker.getCardC() > -1){
-            totalBanker*= (banker.getCardC() == 0) ? 0.307692307 : 0.076923076;
+            totalBanker*= (banker.getCardC() == 0) ? 4 * SINGLE_CARD_PROBABILITY : SINGLE_CARD_PROBABILITY;
         }
 
         return totalPlayer*totalBanker;
