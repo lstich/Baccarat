@@ -26,8 +26,8 @@ Assumptions
     Q           0
     K           0
 
-- value 1-9 each have 4/52 odds of being pulled
-- value 0 has a 16/52 chance of being pulled
+- value 1-9 each have 1/13 odds of being pulled
+- value 0 has a 4/13 chance of being pulled
 
 ---------------------------------------------------
 Rules for drawing 3rd card      (see lecture 12 for Baccarat info)
@@ -66,6 +66,8 @@ Rules for drawing 3rd card      (see lecture 12 for Baccarat info)
 
 ---------------------------------------------------
 Calculate Winning probabilites
+
+*Goal: loop through every player and banker 2 card combination and every scenario of drawing third card and add up probabilities of each outcome for each hand* 
 
 for (all player 2 card combinations){
     for (all banker 2 card combinations){
@@ -138,10 +140,6 @@ for (all player 2 card combinations){
         }
     }
 }
-divide player win total by C(52,2)
-divide banker win total by C(52,2)
-divide tie total by C(52,2)
-
 display results
         
 ---------------------------------------------------
@@ -160,5 +158,5 @@ Helper functions
 - check if player draws a third card
 - check if banker draws a third card
 - add up probability of hand being drawn
-    ex/ {3,9,0} probability is  = 4/52 * 4/52 * 16/52 
+    ex/ {3,9,0} probability is  = 1/13 * 1/13 * 4/13
 - initialize array of player or banker card hands
