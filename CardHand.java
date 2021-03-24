@@ -34,7 +34,6 @@ public class CardHand{
         if(cardC != -1){
             third = cardC;
         }
-        //System.out.println(cardA + " " + cardB + " " + cardC + " " + (( cardA + cardB + third) %10));
         return ( cardA + cardB + third) %10;
     }
 }
