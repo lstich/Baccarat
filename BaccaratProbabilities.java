@@ -29,7 +29,6 @@ public class BaccaratProbabilities{
 
         for (CardHand player : playerHands){
             for (CardHand banker : bankerHands){
-                //System.out.print(banker.getCardC());
                 if (doesPlayerDrawThird(player,banker)){
                     for(int i=0; i<10; i++){
                         player.setCardC(i);
@@ -123,16 +122,13 @@ public class BaccaratProbabilities{
     output: boolean - whether or not third is drawn
     */
     public static boolean doesPlayerDrawThird(CardHand pHand, CardHand bHand){
-        //System.out.print(pHand.value() + " " + bHand.value());
         if (pHand.isNatural() || bHand.isNatural()){
-            //System.out.println(" f");
             return false;
         }
         else if (pHand.value() < 6){
-            //System.out.println(" t");
             return true;
         }
-        //System.out.println(" f");
+
         return false;
     }
 
@@ -184,7 +180,6 @@ public class BaccaratProbabilities{
             }
             //else result is already false
         }
-        //System.out.println(result);
     
         return result;
     }
@@ -193,15 +188,15 @@ public class BaccaratProbabilities{
     /*
     add up probability of hand being drawn
 
-    ex/ probability of player and banker hands{3,} 
-    = 4/52 * 4/52 * 16/52 
+    ex/ probability of player and banker hands{3,2,0} 
+    = 1/13 * 1/13 * 4/13 
 
     input:  CardHand - banker hand
             CardHand - player hand
     output: int probability of this hand occuring
     */
     public static double probabilityOfHands(CardHand player, CardHand banker){
-        
+
         double totalPlayer = (player.getCardA() == 0) ? 0.307692307 : 0.076923076;
         totalPlayer*= (player.getCardB() == 0) ? 0.307692307 : 0.076923076;
         if (player.getCardC() > -1){
