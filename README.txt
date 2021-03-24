@@ -67,7 +67,7 @@ Rules for drawing 3rd card      (see lecture 12 for Baccarat info)
 ---------------------------------------------------
 Calculate Winning probabilites
 
-*Goal: loop through every player and banker 2 card combination and every scenario of drawing third card and add up probabilities of each outcome for each hand* 
+*Goal: loop through every player and banker 2 card combination and every scenario of drawing third card and add the probability of each hand to its outcome* 
 
 for (all player 2 card combinations){
     for (all banker 2 card combinations){
