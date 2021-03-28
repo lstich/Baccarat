@@ -11,9 +11,11 @@ Luke Stichhaller 101072891
 ---------------------------------------------------
 How to run
 
-- Open a terminal in this folder
+- Download file BaccaratProbabilities.java
+- Open a terminal in the folder continaing BaccaratProbabilities.java
 - Compile with: javac BaccaratProbabilites.java
 - Run with:  java BaccaratProbabilites
+- If any issues with comppiling and running please email lukestichhaller@cmail.carleton.ca
 
 ---------------------------------------------------
 Assumptions
@@ -159,12 +161,10 @@ display results
 ---------------------------------------------------
 Helper: Card hand data type
 
-class CardHand{
-    public byte cardA
-    public byte cardB
-    public byte cardC
-
-}
+- stores the 3 cards in a hand 
+- stores whether hand is a natural (stored so code is more readable rather than having to calculate multiple times)
+- getters and setters
+- method to calculate value of hand
 
 ---------------------------------------------------
 Helper functions
