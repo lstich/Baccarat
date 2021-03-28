@@ -12,7 +12,7 @@ public class BaccaratProbabilities{
         //initialize variables
         playerHands = new ArrayList<CardHand>();
         bankerHands = new ArrayList<CardHand>();
-        playerWinProb = 0;
+        playerWinProb = 0.0;
         bankerWinProb = 0;
         tieProb = 0;
 
@@ -26,7 +26,6 @@ public class BaccaratProbabilities{
 
     /*
     calculate and display probabilities of player, banker, and tie
-
     */
     public static void calculateProbabilities(){
 
@@ -38,7 +37,8 @@ public class BaccaratProbabilities{
                     for(int i=0; i<10; i++){
                         player.setCardC(i);
 
-                        if (doesBankerDrawThird(player,banker))
+                        //Case: player and banker draw 3rd card
+                        if (doesBankerDrawThird(player,banker)){
                              //loop through every possible third banker card drawn
                             for(int j=0; j<10; j++){
                                 banker.setCardC(j);
@@ -56,6 +56,7 @@ public class BaccaratProbabilities{
                             }
                             banker.setCardC(-1);
                         }
+                        //Case: player only draw 3rd card
                         else{
                             //check if who wins and add probabilites of hand combination to respectocve outcome total
 
@@ -73,6 +74,7 @@ public class BaccaratProbabilities{
                     player.setCardC(-1);
                 }
                 else{
+                    //Case: banker only draw 3rd card
                     if (doesBankerDrawThird(player,banker)){
                         //loop through every possible third banker card drawn
                         for(int j=0; j<10; j++){
@@ -91,6 +93,7 @@ public class BaccaratProbabilities{
                         }
                         banker.setCardC(-1);
                     }
+                    //Case: neither draw third card
                     else{
                         //check if who wins and add probabilites of hand combination to respectocve outcome total
                         if (player.value() > banker.value()){
@@ -114,7 +117,6 @@ public class BaccaratProbabilities{
 
     /*
     initialize arraylist of all possible 2 card hands
-
     input: ArrayList - list of hands
     */
     public static void cardHandsInit(ArrayList<CardHand> handList){
@@ -131,14 +133,12 @@ public class BaccaratProbabilities{
     }
     /*
     check if player draws a third card
-
     player hand does not draws if 
         - either hand is a natural 
         - player hand is 6 or 7
     
     player hand otherwise does draws if 
         - player hand = 0-5
-
     input: CardHand - player hand
     output: boolean - whether or not third is drawn
     */
@@ -155,12 +155,10 @@ public class BaccaratProbabilities{
 
     /*
     check if banker draws a third card
-
     banker does not draw if:
         - either hand is a natural
         - banker hand = 7
         - player hand = 6 or 7 and banker hand = 6
-
     banker does otherwise draw if:
         - banker hand  = 0-2
         - player hand = 6 or 7 and banker hand = 3-5
@@ -169,7 +167,6 @@ public class BaccaratProbabilities{
             - banker card = 4 and player third card = 2-7
             - banker card = 5 and player third card = 4-7
             - banker card = 6 and player third card = 6 or 7
-
     input:  CardHand - player hand
             CardHand - banker hand
     output: boolean - whether or not third is drawn
@@ -218,13 +215,11 @@ public class BaccaratProbabilities{
 
     /*
     add up probability of hand being drawn
-
     ex/ probability of player and banker hands = {3,2,0} and {7,7,3}
     = 1/13 * 1/13 * 4/13 * 1/13 * 1/13 * 1/13
-
     input:  CardHand - banker hand
             CardHand - player hand
-    output: int probability of this hand occuring
+    output: double probability of this hand occuring
     */
     public static double probabilityOfHands(CardHand player, CardHand banker){
 
@@ -244,7 +239,7 @@ public class BaccaratProbabilities{
         return totalPlayer*totalBanker;
     }
 }
-
+//class for data type of player hand
 class CardHand{
     private int cardA;
     private int cardB;
@@ -276,7 +271,7 @@ class CardHand{
         return cardC;
     }
     
-    //value of hand
+    //numeric value of hand
     public int value(){
         int third = 0;
         //check if hand contains third card 
