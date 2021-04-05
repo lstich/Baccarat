@@ -1,6 +1,7 @@
 # Topic 5 - Baccarat
 Calculate probabilities of banker win, player win, or tie
 
+For our calculation we will be using infinite decks 
 ---------------------------------------------------
 Group members
 
