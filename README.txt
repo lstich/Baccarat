@@ -1,6 +1,4 @@
-# Topic #5
-
-Baccarat
+# Topic 5 - Baccarat
 Calculate probabilities of banker win, player win, or tie
 
 ---------------------------------------------------
@@ -17,10 +15,12 @@ How to run
 - Open a terminal in the folder continaing BaccaratProbabilities.java
 - Compile with: javac BaccaratProbabilites.java
 - Run with:  java BaccaratProbabilites
+
 - If any issues with comppiling and running please email lukestichhaller@cmail.carleton.ca
+- progam takes less than a second to run on our local machines
 
 ---------------------------------------------------
-Assumptions
+Prereqs
 
 - Expected outputs: 
     - Player wins with ~= 0.446147 probability
@@ -85,7 +85,17 @@ Rules for drawing 3rd card      (see lecture 12 for Baccarat info)
 ---------------------------------------------------
 Calculate Winning probabilites
 
-*Goal: loop through every player and banker 2 card combination and every scenario of drawing third card and add the probability of each hand to its outcome* 
+Goal:   - loop through every player and banker 2 card combination
+        - Check every scenario for drawing a third card 
+        - add up the probability of each hand and add this to the corresponding outcome(player win, banker win, or tie)
+
+Scenarios: 
+    - player and banker draw third card
+    - player only draw third card
+    - banker only draw third card
+    - neither draw third card
+
+Pseudocode algorithm for calculating winning probability
 
 for (all player 2 card combinations){
     for (all banker 2 card combinations){
