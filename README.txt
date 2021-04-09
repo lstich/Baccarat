@@ -13,12 +13,13 @@ Luke Stichhaller 101072891
 How to run
 
 - Download file BaccaratProbabilities.java
-- Open a terminal in the folder continaing BaccaratProbabilities.java
+- Open a terminal in the folder containing BaccaratProbabilities.java
 - Compile with: javac BaccaratProbabilites.java
-- Run with:  java BaccaratProbabilites
+- Run with:     java BaccaratProbabilites
 
 - If any issues with comppiling and running please email lukestichhaller@cmail.carleton.ca
 - progam takes less than a second to run on our local machines
+- Github repo: https://github.com/lstich/Baccarat
 
 ---------------------------------------------------
 Prereqs
